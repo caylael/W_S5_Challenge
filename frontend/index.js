@@ -11,6 +11,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
   let mentors = [] // fix this
   let learners = [] // fix this
+  
 
   // 👆 ==================== TASK 1 END ====================== 👆
 
@@ -28,6 +29,19 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   //     "Grace Hopper"
   //   ]`
   // }
+  learners = learners.map(learner => {
+    const mentorNames = learner.mentors.map(mentorId => {
+      const mentor = mentors.find(m => m.id === mentorId);
+      return mentor ? mentor.fullName : "Unknown Mentor";
+    });
+  
+    return {
+      ...learner,
+      mentors: mentorNames
+    };
+  }); 
+
+
 
   // 👆 ==================== TASK 2 END ====================== 👆
 
@@ -46,13 +60,20 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // ❗ Also, loop over the mentors inside the learner object, creating an <li> element for each mentor.
     // ❗ Fill each <li> with a mentor name, and append it to the <ul> mentorList.
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
-
-    const card = document.createElement('div')
-    const heading = document.createElement('h3')
-    const email = document.createElement('div')
-    const mentorsHeading = document.createElement('h4')
-    const mentorsList = document.createElement('ul')
-
+    learners = learners.map(learner => {
+      const mentorNames = learner.mentors.map(mentorId => {
+        const mentor = mentors.find(m => m.id === mentorId);
+        return mentor ? mentor.fullName : "Unknown Mentor";
+      });
+    
+      return {
+        ...learner,
+        mentors: mentorNames
+      };
+    });
+    
+    
+  
     // 👆 ==================== TASK 3 END ====================== 👆
 
     // 👆 WORK ONLY ABOVE THIS LINE 👆
